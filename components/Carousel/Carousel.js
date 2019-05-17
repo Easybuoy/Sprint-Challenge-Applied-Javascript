@@ -1,3 +1,4 @@
+let tl = new TimelineLite();
 class Carousel {
     constructor(carousel) {
         this.carousel = carousel;
@@ -18,8 +19,7 @@ class Carousel {
                 this.nextIndex --;
                 this.prevIndex = this.nextIndex - 1;
                 this.carouselImages[this.prevIndex].style.display = 'flex';
-
-                console.log(this.nextIndex, this.prevIndex, '====')
+                tl.from(this.carouselImages[this.prevIndex], 1, {opacity:0, scaleX: 1, ease: Power2.easeIn});
 
                 if (this.nextIndex >= this.carouselImages.length) {
                     this.nextIndex = 0;
@@ -30,6 +30,7 @@ class Carousel {
     }
 
     slideRight() { 
+
         this.rightButton.addEventListener('click', () => { 
             this.leftButton.classList.remove('disabled');
 
@@ -41,6 +42,9 @@ class Carousel {
 
             this.carouselImages.forEach(image => image.style.display = 'none');
             this.carouselImages[this.nextIndex].style.display = 'flex';
+            
+            tl.from(this.carouselImages[this.nextIndex], 1, {opacity:0, scaleX: 1, ease: Power2.easeIn});
+
             this.nextIndex ++;
             this.prevIndex = this.nextIndex - 1;
         });

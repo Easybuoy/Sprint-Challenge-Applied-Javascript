@@ -292,6 +292,7 @@ body {
   top: 50%;
   left: 25px;
   transform: translate(0, -50%);
+  z-index: 1;
 }
 .carousel .right-button {
   top: 50%;
@@ -304,4 +305,17 @@ body {
 }
 .carousel .disabled {
   display: none;
+}
+.carousel .slide-left {
+  animation: slide-left 4s;
+}
+@keyframes slide-left {
+  from {
+    margin-left: 0%;
+    width: 0;
+  }
+  to {
+    margin-left: 0;
+    width: 100%;
+  }
 }
